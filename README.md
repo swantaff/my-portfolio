@@ -1,2 +1,2 @@
-# my-portfolio
-A portfolio of serverless examples
+# Mark Jones - Portfolio
+A portfolio of serverless examples using AWS and ReactJS
