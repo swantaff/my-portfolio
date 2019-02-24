@@ -16,7 +16,7 @@ def lambda_handler(event, context):
     print(event)
     
     try:
-        job = event.get("CodePipline.job")
+        job = event.get("CodePipeline.job")
 
         print(job)
 
@@ -50,7 +50,7 @@ def lambda_handler(event, context):
             Message='Portfolio successfully Deployed!'
             )
         if job:
-            pipeline = boto3.client('codepipline')
+            pipeline = boto3.client('codepipeline')
             pipeline.put_job_success_result(jobId=job["id"])
     except Exception, e:
         response = sns.publish(
@@ -58,6 +58,6 @@ def lambda_handler(event, context):
             Message='Portfolio Deployment Failed!'
             )
             if job:
-                pipeline = boto3.client('codepipline')
+                pipeline = boto3.client('codepipeline')
                 pipeline.put_job_failure_result(jobId=job["id"])
         raise e
