@@ -57,7 +57,7 @@ def lambda_handler(event, context):
             TopicArn = 'arn:aws:sns:eu-west-2:793110508758:deployPortfolioTopic',
             Message='Portfolio Deployment Failed!'
             )
-            if job:
-                pipeline = boto3.client('codepipeline')
-                pipeline.put_job_failure_result(jobId=job["id"])
+        if job:
+            pipeline = boto3.client('codepipeline')
+            pipeline.put_job_failure_result(jobId=job["id"])
         raise e
