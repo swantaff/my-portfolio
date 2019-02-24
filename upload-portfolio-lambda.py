@@ -12,6 +12,9 @@ def lambda_handler(event, context):
         "bucketName": 'portfoliobuild.markjones.info',
         "objectKey": 'portfoliobuild.zip'
     }
+
+    print(event)
+    
     try:
         job = event.get("CodePipline.job")
 
