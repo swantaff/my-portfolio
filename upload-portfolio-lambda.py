@@ -1,3 +1,4 @@
+import json
 import boto3
 import StringIO
 import zipfile
@@ -14,6 +15,7 @@ def lambda_handler(event, context):
     }
 
     print(event)
+    print("end event")
     
     try:
         job = event.get("CodePipeline.job")
@@ -30,6 +32,8 @@ def lambda_handler(event, context):
         s3 = boto3.resource('s3')
         
         portfolio_bucket = s3.Bucket('portfolio.markjones.info')
+        
+        #print("Debug - build bucket") 
         
         build_bucket = s3.Bucket(location["bucketName"])
         
