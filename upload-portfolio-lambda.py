@@ -9,31 +9,25 @@ def lambda_handler(event, context):
     
     sns = boto3.client('sns')
     
+    # note this is a dictionary (dict) object in python. NOT a JSON Object
     location = {
         "bucketName": 'portfoliobuild.markjones.info',
         "objectKey": 'portfoliobuild.zip'
     }
 
-    print(event)
-    print("end event")
-    
     try:
         job = event.get("CodePipeline.job")
 
-        print(job)
-
         if job:
-            for artifact in job["data"] [inputArtifacts]:
+            for artifact in job["data"] ["inputArtifacts"]:
                 if artifact["name"] == "BuildArtifact":
                     location = artifact["location"]["s3Location"]
         
-        print("Building portfolio from") + str(location)
+        print("Building portfolio from ") + str(location)
 
         s3 = boto3.resource('s3')
         
         portfolio_bucket = s3.Bucket('portfolio.markjones.info')
-        
-        #print("Debug - build bucket") 
         
         build_bucket = s3.Bucket(location["bucketName"])
         
@@ -57,7 +51,8 @@ def lambda_handler(event, context):
         if job:
             pipeline = boto3.client('codepipeline')
             pipeline.put_job_success_result(jobId=job["id"])
-    except Exception, e:
+    except Exception as e:
+        print(e)
         response = sns.publish(
             TopicArn = 'arn:aws:sns:eu-west-2:793110508758:deployPortfolioTopic',
             Message='Portfolio Deployment Failed!'
@@ -66,3 +61,5 @@ def lambda_handler(event, context):
             pipeline = boto3.client('codepipeline')
             pipeline.put_job_failure_result(jobId=job["id"])
         raise e
+        
+    return 'Deployment complete'
