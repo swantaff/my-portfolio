@@ -8,6 +8,8 @@ console.log("loaded");
 const myWork = [
     {
         'title': "Work Example",
+        'href' : "https://example.com",
+        'desc' : "Consectetur quis nulla id ut esse enim eu fugiat irure duis aute.",
         'image':{
             'desc': "example screenshot of a project involving code",
             'src': "images/example1.png",
@@ -16,6 +18,8 @@ const myWork = [
     },
     {
         'title': "Portfolio Boilerplate",
+        'href' : "https://example.com",
+        'desc' : "Consectetur quis nulla id ut esse enim eu fugiat irure duis aute.",
         'image':{
             'desc': "example screenshot of a project involving chemistry",
             'src': "images/example2.png",
@@ -24,6 +28,8 @@ const myWork = [
     },
     {
         'title': "Work Example",
+        'href' : "https://example.com",
+        'desc' : "Consectetur quis nulla id ut esse enim eu fugiat irure duis aute.",
         'image':{
             'desc': "example screenshot of a project involving cats",
             'src': "images/example3.png",
