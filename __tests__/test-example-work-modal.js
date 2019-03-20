@@ -34,7 +34,6 @@ describe("ExampleWorkModal component", () => {
     });
 
     it("Should link to our project", () => {
-       // console.log(component.debug());
 
        expect(anchors.prop('href')).toEqual(myExample.href);
     });
