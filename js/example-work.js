@@ -18,6 +18,7 @@ class ExampleWork extends React.Component {
       }
 
       openModal(evt, example) {
+        console.log("openModal pressed");
         this.setState({
           'modalOpen' : true,
           'selectedExample' : example
@@ -25,6 +26,7 @@ class ExampleWork extends React.Component {
       }
 
       closeModal(evt) {
+        console.log("closeModal pressed");
         this.setState({
           'modalOpen' : false
         });
@@ -45,7 +47,7 @@ class ExampleWork extends React.Component {
             </section> 
             
             <ExampleWorkModal example={this.state.selectedExample}
-              open={this.state.modalOpen}/>
+              open={this.state.modalOpen} closeModal={this.closeModal}/>
           </span>
         )
     }
@@ -57,7 +59,7 @@ class ExampleWorkBubble extends React.Component {
         return(
           
           <div className="section__exampleWrapper"
-            onclick={ (evt) => this.props.openModal(evt, example) } >
+            onClick={ (evt) => this.props.openModal(evt, example) } >
             <div className="section__example">
               <img alt={example.image.desc}
                     className="section__exampleImage"
